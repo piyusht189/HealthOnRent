@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@id/home" android:title="Home" />
+    </group>
+    <group android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:enabled="false"
+            android:id="@+id/products"
+            android:title="Products" />
+        <item
+            android:id="@+id/hospitalbeds"
+            android:title="&#160;&#160;&#160;&#160;Hospital Beds" />
+        <item
+            android:id="@+id/respiratoryrange"
+            android:title="&#160;&#160;&#160;&#160;Repiratory Range" />
+        <item
+            android:enabled="false"
+            android:title="&#160;&#160;&#160;&#160;Mobility Aids" />
+        <item
+            android:id="@+id/crutches"
+            android:title="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Crutches" />
+        <item
+            android:id="@+id/walkers"
+            android:title="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Walkers" />
+        <item
+            android:id="@+id/wheelchair"
+            android:title="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Wheel Chairs" />
+    </group>
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/ourtrust"
+            android:title="Our Trust" />
+        <item
+            android:id="@+id/contactus"
+            android:title="Contact Us" />
+    </group>
+</menu>

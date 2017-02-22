@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.hor.piyush.healthonrent.OurTrust">
+
+    <android.support.design.widget.AppBarLayout
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@id/toolbar"
+            android:background="@color/colorAccent"
+            android:layout_width="fill_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+            <RelativeLayout
+                android:layout_gravity="end"
+                android:paddingRight="20.0dip"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView android:id="@+id/cart"
+                    android:clickable="true"
+                    android:layout_width="30.0dip"
+                    android:layout_height="30.0dip"
+                    android:src="@drawable/cart"
+                    android:onClick="cart" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_gravity="end"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/profile"
+                    android:clickable="true"
+                    android:layout_width="30.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_marginRight="20.0dip"
+                    android:src="@drawable/profile"
+                    android:onClick="profile" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_our_trust" />
+
+
+</android.support.design.widget.CoordinatorLayout>
