@@ -1,7 +1,9 @@
 package com.hor.piyush.healthonrent;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,7 +27,7 @@ import java.io.InputStream;
 public class ContactUs extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private WebView mWebview;
-    ProgressBar pbar;
+    private ProgressDialog progress;
     String ur = "http://healthonrent.in/contact-us/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +58,18 @@ public class ContactUs extends AppCompatActivity
         public void onPageFinished(WebView paramWebView, String paramString)
         {
             super.onPageFinished(paramWebView, paramString);
-          //  injectCSS();
-            mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
 
+            mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
+            progress.dismiss();
+            mWebview.setVisibility(View.VISIBLE);
         }
 
         public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
         {
+            progress=new ProgressDialog(ContactUs.this);
+            progress.setMessage("Loading");
+            progress.show();
+            mWebview.setVisibility(View.INVISIBLE);
             super.onPageStarted(paramWebView, paramString, paramBitmap);
         }
 
@@ -76,25 +83,7 @@ public class ContactUs extends AppCompatActivity
             return true;
         }
     }
-    private void injectCSS() {
-        try {
-            InputStream inputStream = getAssets().open("style.css");
-            byte[] buffer = new byte[inputStream.available()];
-            inputStream.read(buffer);
-            inputStream.close();
-            String encoded = Base64.encodeToString(buffer, Base64.NO_WRAP);
-            mWebview.loadUrl("javascript:(function() {" +
-                    "var parent = document.getElementsByTagName('header').item(0);" +
-                    "var style = document.createElement('style');" +
-                    "style.type = 'text/css';" +
-                    // Tell the browser to BASE64-decode the string into your script !!!
-                    "style.innerHTML = window.atob('" + encoded + "');" +
-                    "parent.appendChild('body:{background-color:red;}}')" +
-                    "})()");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
 
@@ -155,4 +144,23 @@ public class ContactUs extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    private class LongOperation extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+        }
+
+    }
 }
+
