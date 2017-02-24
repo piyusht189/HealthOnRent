@@ -1,5 +1,6 @@
 package com.hor.piyush.healthonrent;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.webkit.WebViewClient;
 public class OurTrust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private WebView mWebview;
+    private ProgressDialog progress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +52,18 @@ public class OurTrust extends AppCompatActivity
         {
             super.onPageFinished(paramWebView, paramString);
             OurTrust.this.mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
+            mWebview.setVisibility(View.VISIBLE);
+            progress.dismiss();
         }
 
         public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
         {
+            progress=new ProgressDialog(OurTrust.this);
+            progress.setTitle("HealthOnRent");
+            progress.setIcon(R.drawable.loader);
+            progress.setMessage("Loading");
+            progress.show();
+            mWebview.setVisibility(View.INVISIBLE);
             super.onPageStarted(paramWebView, paramString, paramBitmap);
         }
 
@@ -68,6 +78,8 @@ public class OurTrust extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (mWebview.canGoBack()) {
+            mWebview.goBack();
         } else {
             super.onBackPressed();
         }

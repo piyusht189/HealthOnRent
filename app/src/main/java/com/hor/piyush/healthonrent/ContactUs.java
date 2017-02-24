@@ -60,13 +60,16 @@ public class ContactUs extends AppCompatActivity
             super.onPageFinished(paramWebView, paramString);
 
             mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
-            progress.dismiss();
+
             mWebview.setVisibility(View.VISIBLE);
+            progress.dismiss();
         }
 
         public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
         {
             progress=new ProgressDialog(ContactUs.this);
+            progress.setTitle("HealthOnRent");
+            progress.setIcon(R.drawable.loader);
             progress.setMessage("Loading");
             progress.show();
             mWebview.setVisibility(View.INVISIBLE);
@@ -93,6 +96,8 @@ public class ContactUs extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (mWebview.canGoBack()) {
+            mWebview.goBack();
         } else {
             super.onBackPressed();
         }
