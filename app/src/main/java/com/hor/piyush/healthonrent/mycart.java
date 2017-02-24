@@ -47,23 +47,18 @@ public class mycart extends AppCompatActivity {
             super.onPageFinished(paramWebView, paramString);
             mycart.this.mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
             mWebview.setVisibility(View.VISIBLE);
-            progress.dismiss();
+
         }
 
         public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
         {
-            progress=new ProgressDialog(mycart.this);
-            progress.setTitle("HealthOnRent");
-            progress.setIcon(R.drawable.loader);
-            progress.setMessage("Loading");
-            progress.show();
+
             mWebview.setVisibility(View.INVISIBLE);
             super.onPageStarted(paramWebView, paramString, paramBitmap);
         }
 
         public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
         {
-            Toast.makeText(mycart.this, paramString, Toast.LENGTH_LONG).show();
             if (paramString.equals("http://healthonrent.in/product-categories/"))
             {
                 mycart.this.startActivity(new Intent(mycart.this, Home.class));
@@ -78,10 +73,7 @@ public class mycart extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else if (mWebview.canGoBack()) {
+        if (mWebview.canGoBack()) {
             mWebview.goBack();
         } else {
             super.onBackPressed();

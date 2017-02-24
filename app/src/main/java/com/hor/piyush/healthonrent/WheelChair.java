@@ -54,6 +54,9 @@ public class WheelChair extends AppCompatActivity
             WheelChair.this.mWebview.loadUrl("javascript:(function() { document.getElementsByTagName('header')[0].style.display='none';document.getElementsByTagName('footer')[0].style.display='none'; })()");
             mWebview.setVisibility(View.VISIBLE);
             progress.dismiss();
+            progress.dismiss();
+            progress.dismiss();
+            progress.dismiss();
         }
 
         public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -70,6 +73,10 @@ public class WheelChair extends AppCompatActivity
 
         public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
         {
+            if(paramString.equals("http://healthonrent.in/cart/")){
+                startActivity(new Intent(getApplicationContext(),mycart.class));
+                finish();
+            }
             paramWebView.loadUrl(paramString);
             return true;
         }

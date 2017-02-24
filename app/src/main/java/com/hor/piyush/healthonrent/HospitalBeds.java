@@ -77,6 +77,10 @@ public class HospitalBeds extends AppCompatActivity
 
         public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
         {
+            if(paramString.equals("http://healthonrent.in/cart/")){
+                startActivity(new Intent(getApplicationContext(),mycart.class));
+                finish();
+            }
             paramWebView.loadUrl(paramString);
             return true;
         }

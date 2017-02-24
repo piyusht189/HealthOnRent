@@ -93,7 +93,6 @@ public class Home extends AppCompatActivity
 
     public void cart(View paramView)
     {
-
         startActivity(new Intent(this, mycart.class));
     }
     public void profile(View paramView)
