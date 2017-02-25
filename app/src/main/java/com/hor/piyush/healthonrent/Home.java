@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,12 +28,24 @@ public class Home extends AppCompatActivity
     private WebView mWebview;
     String url = "http://www.healthonrent.in";
     private ProgressDialog progress;
+    String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
+
+    public static final String PREF_USER_FIRST_TIME = "user_first_time";
+    boolean isUserFirstTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(Home.this, PREF_USER_FIRST_TIME, "true"));
+
+        Intent introIntent = new Intent(Home.this, MainActivity.class);
+        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+
+        if (isUserFirstTime)
+            startActivity(introIntent);
 
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
@@ -74,7 +87,7 @@ public class Home extends AppCompatActivity
 
         public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
         {
-            Toast.makeText(Home.this, paramString, Toast.LENGTH_LONG).show();
+            
             paramWebView.loadUrl(paramString);
             return true;
         }

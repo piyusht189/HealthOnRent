@@ -34,7 +34,7 @@ public class HospitalBeds extends AppCompatActivity
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
         this.mWebview.loadUrl("http://healthonrent.in/product-category/hospital-beds/");
-
+        mWebview.setInitialScale(200);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,6 +80,9 @@ public class HospitalBeds extends AppCompatActivity
             if(paramString.equals("http://healthonrent.in/cart/")){
                 startActivity(new Intent(getApplicationContext(),mycart.class));
                 finish();
+            }
+            if(paramString.substring(0,34).equals("http://healthonrent.in/wp-content/upload")){
+                Toast.makeText(HospitalBeds.this, "hello", Toast.LENGTH_SHORT).show();
             }
             paramWebView.loadUrl(paramString);
             return true;

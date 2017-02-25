@@ -22,6 +22,7 @@ public class OurTrust extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private WebView mWebview;
     private ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
