@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_splash_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="@drawable/bg"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hor.piyush.healthonrent.SplashScreen"
+    tools:showIn="@layout/activity_splash_screen">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:alpha="1"
+        android:id="@+id/imageView2"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+</RelativeLayout>

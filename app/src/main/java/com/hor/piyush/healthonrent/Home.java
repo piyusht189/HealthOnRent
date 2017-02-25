@@ -30,8 +30,7 @@ public class Home extends AppCompatActivity
     private ProgressDialog progress;
     String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
-    public static final String PREF_USER_FIRST_TIME = "user_first_time";
-    boolean isUserFirstTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +38,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(Home.this, PREF_USER_FIRST_TIME, "true"));
 
-        Intent introIntent = new Intent(Home.this, MainActivity.class);
-        introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
-
-        if (isUserFirstTime)
-            startActivity(introIntent);
 
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
