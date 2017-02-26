@@ -1,6 +1,7 @@
 package com.hor.piyush.healthonrent;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.CoordinatorLayout;
@@ -157,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Utils.saveSharedSetting(MainActivity.this, SplashScreen.PREF_USER_FIRST_TIME, "false");
+                startActivity(new Intent(MainActivity.this,SplashScreen.class));
                 finish();
             }
         });
@@ -164,9 +167,11 @@ public class MainActivity extends AppCompatActivity {
         mFinishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Utils.saveSharedSetting(MainActivity.this, SplashScreen.PREF_USER_FIRST_TIME, "false");
+                startActivity(new Intent(MainActivity.this,SplashScreen.class));
                 finish();
                 //  update 1st time pref
-                Utils.saveSharedSetting(MainActivity.this, SplashScreen.PREF_USER_FIRST_TIME, "false");
+
 
             }
         });

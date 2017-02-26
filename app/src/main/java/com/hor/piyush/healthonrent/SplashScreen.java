@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
 
         if (isUserFirstTime) {
             startActivity(introIntent);
-            finish();
+
         } else {
             new Handler().postDelayed(new Runnable() {
 
