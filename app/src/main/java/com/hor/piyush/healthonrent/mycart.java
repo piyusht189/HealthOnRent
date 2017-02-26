@@ -27,7 +27,9 @@ public class mycart extends AppCompatActivity {
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
+        mWebview.setInitialScale(200);
         this.mWebview.loadUrl("http://www.healthonrent.in/cart");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

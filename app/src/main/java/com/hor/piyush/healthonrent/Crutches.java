@@ -32,6 +32,7 @@ public class Crutches extends AppCompatActivity
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
+        mWebview.setInitialScale(200);
         this.mWebview.loadUrl("http://healthonrent.in/product-category/mobility-aids/crutches/");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,7 +125,10 @@ public class Crutches extends AppCompatActivity
         } else if (id == R.id.ourtrust) {
             startActivity(new Intent(this, OurTrust.class));
             finish();
-        } else{
+        } else if(id==R.id.homee){
+            startActivity(new Intent(this, Home.class));
+            finish();
+    }else{
             startActivity(new Intent(this, ContactUs.class));
             finish();
         }

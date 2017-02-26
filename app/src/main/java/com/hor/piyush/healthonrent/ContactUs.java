@@ -38,6 +38,7 @@ public class ContactUs extends AppCompatActivity
         mWebview = ((WebView)findViewById(R.id.mywebview));
         mWebview.getSettings().setJavaScriptEnabled(true);
         mWebview.setWebViewClient(new myWebClient());
+        mWebview.setInitialScale(200);
         mWebview.loadUrl(this.ur);
 
 
@@ -140,7 +141,10 @@ public class ContactUs extends AppCompatActivity
         } else if (id == R.id.ourtrust) {
             startActivity(new Intent(this, OurTrust.class));
             finish();
-        } else{
+        } else if(id==R.id.homee){
+            startActivity(new Intent(this, Home.class));
+            finish();
+        }else{
             startActivity(new Intent(this, ContactUs.class));
             finish();
         }

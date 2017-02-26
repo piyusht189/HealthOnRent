@@ -134,7 +134,10 @@ public class HospitalBeds extends AppCompatActivity
         } else if (id == R.id.ourtrust) {
             startActivity(new Intent(this, OurTrust.class));
             finish();
-        } else{
+        } else if(id==R.id.homee){
+            startActivity(new Intent(this, Home.class));
+            finish();
+        }else{
             startActivity(new Intent(this, ContactUs.class));
             finish();
         }

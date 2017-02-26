@@ -2,7 +2,8 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:id="@id/home" android:title="Home" />
+        <item android:id="@+id/homee"
+            android:title="Home" />
     </group>
     <group android:id="@+id/menu_bottom"
         android:checkableBehavior="none">

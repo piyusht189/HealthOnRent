@@ -33,6 +33,7 @@ public class RespiratoryRange extends AppCompatActivity
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
+        mWebview.setInitialScale(200);
         this.mWebview.loadUrl("http://healthonrent.in/product-category/respiratory-range/");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,7 +106,6 @@ public class RespiratoryRange extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.hospitalbeds) {
             startActivity(new Intent(this, HospitalBeds.class));
             finish();
@@ -124,11 +124,13 @@ public class RespiratoryRange extends AppCompatActivity
         } else if (id == R.id.ourtrust) {
             startActivity(new Intent(this, OurTrust.class));
             finish();
-        } else{
+        } else if(id==R.id.homee){
+            startActivity(new Intent(this, Home.class));
+            finish();
+        }else{
             startActivity(new Intent(this, ContactUs.class));
             finish();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

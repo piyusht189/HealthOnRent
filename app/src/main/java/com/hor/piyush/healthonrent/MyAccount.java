@@ -76,7 +76,7 @@ public class MyAccount extends AppCompatActivity {
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
-
+        mWebview.setInitialScale(200);
         mWebview.getSettings().setAllowFileAccess(true);
         mWebview.getSettings().setAllowContentAccess(true);
         mWebview.getSettings().setDatabaseEnabled(true);

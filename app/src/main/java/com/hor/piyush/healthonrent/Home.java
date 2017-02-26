@@ -31,7 +31,6 @@ public class Home extends AppCompatActivity
     String[] colors = {"#96CC7A", "#EA705D", "#66BBCC"};
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +39,12 @@ public class Home extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
         this.mWebview = ((WebView)findViewById(R.id.mywebview));
         this.mWebview.getSettings().setJavaScriptEnabled(true);
         this.mWebview.setWebViewClient(new myWebClient());
-        this.mWebview.loadUrl("http://www.healthonrent.in");
+
+        this.mWebview.loadUrl("file:///android_asset/index.html");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,8 +81,19 @@ public class Home extends AppCompatActivity
 
         public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
         {
-            
-            paramWebView.loadUrl(paramString);
+            if(paramString.equals("http://healthonrent.in/product-category/hospital-beds/"))
+            {
+                startActivity(new Intent(Home.this,HospitalBeds.class));
+
+            }else if(paramString.equals("http://healthonrent.in/product-category/mobility-aids/crutches/")){
+                startActivity(new Intent(Home.this,Crutches.class));
+            }else if(paramString.equals("http://healthonrent.in/product-category/mobility-aids/walkers/")){
+                startActivity(new Intent(Home.this,Walkers.class));
+            }else if(paramString.equals("http://healthonrent.in/product-category/mobility-aids/wheelchairs/")){
+                startActivity(new Intent(Home.this,WheelChair.class));
+            }else if(paramString.equals("http://healthonrent.in/product-category/respiratory-range/")){
+                startActivity(new Intent(Home.this,RespiratoryRange.class));
+            }
             return true;
         }
     }
@@ -93,6 +105,7 @@ public class Home extends AppCompatActivity
         } else if (mWebview.canGoBack()) {
             mWebview.goBack();
         } else {
+            finish();
             super.onBackPressed();
         }
     }
@@ -130,11 +143,13 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.ourtrust) {
             startActivity(new Intent(this, OurTrust.class));
             finish();
-        } else{
+        } else if(id==R.id.homee){
+            startActivity(new Intent(this, Home.class));
+            finish();
+        }else{
             startActivity(new Intent(this, ContactUs.class));
             finish();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
